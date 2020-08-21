@@ -18,4 +18,7 @@ public class Piece {
 	public void setRow(int r) { this.row = r; }
 	public void setColumn(int c) { this.col = c; }
 
+	public int getColumn() { return col; }
+	public int getRow() { return row; }
+
 }

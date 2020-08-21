@@ -1,8 +1,9 @@
 package example.sliding.model;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
-public class Puzzle {
+public class Puzzle implements Iterable<Piece> {
 	ArrayList<Piece> pieces = new ArrayList<>();
 	
 	public final int numRows;
@@ -24,5 +25,16 @@ public class Puzzle {
 	
 	public void setExitDirection(MoveType dir) { exitDirection = dir; }
 	public MoveType getExitDirection() { return exitDirection; }
+
+	public void add(Piece p, int col, int row) {
+		p.setColumn(col);
+		p.setRow(row);
+		pieces.add(p);
+	}
+
+	@Override
+	public Iterator<Piece> iterator() {
+		return pieces.iterator();
+	}
 	
 }

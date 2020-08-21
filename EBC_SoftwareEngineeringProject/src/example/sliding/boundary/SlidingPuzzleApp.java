@@ -6,6 +6,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import example.sliding.model.Model;
+
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
@@ -16,12 +19,16 @@ import javax.swing.JButton;
 public class SlidingPuzzleApp extends JFrame {
 
 	private JPanel contentPane;
+	PuzzlePanel panel;
 
-
+	Model model;
+	
 	/**
 	 * Create the frame.
 	 */
-	public SlidingPuzzleApp() {
+	public SlidingPuzzleApp(Model m) {
+		super();
+		this.model = m;
 		setTitle("Sliding Puzzle Application");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 558, 464);
@@ -29,7 +36,7 @@ public class SlidingPuzzleApp extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		
-		JPanel panel = new JPanel();
+		panel = new PuzzlePanel(model);
 		
 		JLabel nmLabel = new JLabel("Number of Moves:");
 		
