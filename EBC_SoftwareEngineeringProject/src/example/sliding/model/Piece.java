@@ -21,4 +21,12 @@ public class Piece {
 	public int getColumn() { return col; }
 	public int getRow() { return row; }
 
+	public boolean contains(Coordinate c) {
+		if (c.col >= col && c.col < col + width && c.row >= row && c.row < row + height) {
+			return true;
+		}
+		
+		return false;
+	}
+
 }

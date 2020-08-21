@@ -1,18 +1,18 @@
 package example.sliding.boundary;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import example.sliding.controller.SelectPieceController;
 import example.sliding.model.Model;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
-import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JButton;
 
@@ -22,6 +22,8 @@ public class SlidingPuzzleApp extends JFrame {
 	PuzzlePanel panel;
 
 	Model model;
+	
+	public PuzzlePanel getPuzzlePanel() { return panel; }
 	
 	/**
 	 * Create the frame.
@@ -37,6 +39,12 @@ public class SlidingPuzzleApp extends JFrame {
 		setContentPane(contentPane);
 		
 		panel = new PuzzlePanel(model);
+		panel.addMouseListener(new MouseAdapter() { 
+			@Override
+			public void mousePressed(MouseEvent me) {
+				new SelectPieceController(model, SlidingPuzzleApp.this).process(me.getPoint());
+			}
+		});
 		
 		JLabel nmLabel = new JLabel("Number of Moves:");
 		
