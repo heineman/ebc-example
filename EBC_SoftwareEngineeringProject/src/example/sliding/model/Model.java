@@ -7,6 +7,7 @@ public class Model {
 	Puzzle puzzle;
 	boolean gameOver;
 	Piece selectedPiece;
+	int numMoves = 0;
 	
 	/**
 	 *  (0,0) (1,0) (2,0)
@@ -36,6 +37,20 @@ public class Model {
 		puzzle.add(new Piece(2, 1), 1, 4);
 	}
 	
+	public boolean tryMove(MoveType dir) {
+		if (selectedPiece == null) { return false; }
+		
+		for (MoveType move : availableMoves()) {
+			if (dir == move) {
+				selectedPiece.move(dir);
+				numMoves ++;
+				return true;
+			}
+		}
+		
+		return true;
+	}
+	
 	public List<MoveType> availableMoves() {
 		ArrayList<MoveType> moves = new ArrayList<>();
 		if (selectedPiece == null) {
@@ -63,7 +78,7 @@ public class Model {
 		}
 		
 		// Right?
-		if (coord.col < puzzle.numColumns - 1) {
+		if (coord.col + p.width < puzzle.numColumns) {
 			boolean available = true;
 			for (int r = 0; r < p.height; r++) {
 				if (puzzle.isCovered(new Coordinate(coord.col + p.width, coord.row))) {
@@ -89,7 +104,7 @@ public class Model {
 		}
 				
 		// Down?
-		if (coord.row < puzzle.numRows - 1) {
+		if (coord.row + p.height < puzzle.numRows) {
 			boolean available = true;
 			for (int c = 0; c < p.width; c++) {
 				if (puzzle.isCovered(new Coordinate(coord.col, coord.row + p.height))) {
@@ -113,4 +128,6 @@ public class Model {
 	
 	public boolean isGameOver() { return gameOver; }
 	public void setGameOver(boolean flag) { gameOver = flag; }
+
+	public int getNumMoves() { return numMoves; }
 }

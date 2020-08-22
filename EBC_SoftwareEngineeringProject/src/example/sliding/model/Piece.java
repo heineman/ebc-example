@@ -30,4 +30,11 @@ public class Piece {
 		return false;
 	}
 
+	public void move(MoveType dir) {
+		if (dir == MoveType.None) { return; }
+		
+		this.row += dir.deltaR;
+		this.col += dir.deltaC;
+	}
+
 }

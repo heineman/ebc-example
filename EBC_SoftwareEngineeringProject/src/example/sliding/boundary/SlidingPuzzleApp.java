@@ -1,5 +1,7 @@
 package example.sliding.boundary;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
@@ -8,6 +10,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import example.sliding.controller.MovePieceController;
 import example.sliding.controller.SelectPieceController;
 import example.sliding.model.Model;
 import example.sliding.model.MoveType;
@@ -25,12 +28,14 @@ public class SlidingPuzzleApp extends JFrame {
 
 	Model model;
 	JButton btnUp, btnDown, btnRight, btnLeft;
+	JLabel actualMoves;
 	
 	public PuzzlePanel getPuzzlePanel() { return panel; }
 	public JButton getUpButton() { return btnUp; }
 	public JButton getDownButton() { return btnDown; }
 	public JButton getLeftButton() { return btnLeft; }
 	public JButton getRightButton() { return btnRight; }
+	public JLabel getActualMovesLabel() { return actualMoves; }
 	
 	/**
 	 * Create the frame.
@@ -55,17 +60,42 @@ public class SlidingPuzzleApp extends JFrame {
 		
 		JLabel nmLabel = new JLabel("Number of Moves:");
 		
-		JLabel actualMoves = new JLabel("0");
+		actualMoves = new JLabel("" + model.getNumMoves());
 		
 		JButton btnReset = new JButton("Reset");
 		
 		btnUp = new JButton("^");
+		btnUp.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new MovePieceController(model, SlidingPuzzleApp.this).move(MoveType.Up);
+			}
+		});
 		
 		btnDown = new JButton("v");
+		btnDown.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new MovePieceController(model, SlidingPuzzleApp.this).move(MoveType.Down);
+			}
+		});
 		
 		btnRight = new JButton(">");
+		btnRight.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new MovePieceController(model, SlidingPuzzleApp.this).move(MoveType.Right);
+			}
+		});
 		
 		btnLeft = new JButton("<");
+		btnLeft.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new MovePieceController(model, SlidingPuzzleApp.this).move(MoveType.Left);
+			}
+		});
+		
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
