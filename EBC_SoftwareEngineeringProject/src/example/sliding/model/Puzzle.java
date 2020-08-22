@@ -6,6 +6,8 @@ import java.util.Iterator;
 public class Puzzle implements Iterable<Piece> {
 	ArrayList<Piece> pieces = new ArrayList<>();
 	
+	ArrayList<Piece> originals = new ArrayList<>();
+	
 	public final int numRows;
 	public final int numColumns;
 	int exitRow;
@@ -29,7 +31,11 @@ public class Puzzle implements Iterable<Piece> {
 	public void add(Piece p, int col, int row) {
 		p.setColumn(col);
 		p.setRow(row);
+		
+		// check overlapping....
+		
 		pieces.add(p);
+		originals.add(p.copy());
 	}
 	
 	public boolean isCovered(Coordinate coord) {
@@ -45,6 +51,17 @@ public class Puzzle implements Iterable<Piece> {
 	@Override
 	public Iterator<Piece> iterator() {
 		return pieces.iterator();
+	}
+
+	public void reset() {
+		pieces.clear();
+		for (Piece p: originals) {
+			pieces.add(p.copy());
+		}
+	}
+
+	public boolean isWinCondition(int col, int row, MoveType dir) {
+		return col == exitColumn && row == exitRow && dir == exitDirection;
 	}
 	
 }

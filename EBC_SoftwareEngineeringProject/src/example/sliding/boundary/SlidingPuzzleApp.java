@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import example.sliding.controller.MovePieceController;
+import example.sliding.controller.ResetController;
 import example.sliding.controller.SelectPieceController;
 import example.sliding.model.Model;
 import example.sliding.model.MoveType;
@@ -27,7 +28,7 @@ public class SlidingPuzzleApp extends JFrame {
 	PuzzlePanel panel;
 
 	Model model;
-	JButton btnUp, btnDown, btnRight, btnLeft;
+	JButton btnUp, btnDown, btnRight, btnLeft, btnReset;
 	JLabel actualMoves;
 	
 	public PuzzlePanel getPuzzlePanel() { return panel; }
@@ -35,6 +36,8 @@ public class SlidingPuzzleApp extends JFrame {
 	public JButton getDownButton() { return btnDown; }
 	public JButton getLeftButton() { return btnLeft; }
 	public JButton getRightButton() { return btnRight; }
+	public JButton getResetButton() { return btnReset; }
+	
 	public JLabel getActualMovesLabel() { return actualMoves; }
 	
 	/**
@@ -44,7 +47,7 @@ public class SlidingPuzzleApp extends JFrame {
 		super();
 		this.model = m;
 		setTitle("Sliding Puzzle Application");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		setBounds(100, 100, 558, 464);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -62,7 +65,13 @@ public class SlidingPuzzleApp extends JFrame {
 		
 		actualMoves = new JLabel("" + model.getNumMoves());
 		
-		JButton btnReset = new JButton("Reset");
+		btnReset = new JButton("Reset");
+		btnReset.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new ResetController(model, SlidingPuzzleApp.this).reset();
+			}
+		});
 		
 		btnUp = new JButton("^");
 		btnUp.addActionListener(new ActionListener() {

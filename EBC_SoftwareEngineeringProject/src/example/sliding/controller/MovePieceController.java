@@ -17,6 +17,14 @@ public class MovePieceController {
 	public boolean move(MoveType dir) {
 		if (model.getSelectedPiece() == null) { return false; }
 		
+		if (model.isGameOver()) { return false; }
+		
+		if (model.isWinCondition(dir)) {
+			model.setGameOver(true);
+			app.repaint();
+			return true;
+		}
+		
 		if (model.tryMove(dir)) {
 			UpdateButtons.enableButtons(app, model.availableMoves());
 			

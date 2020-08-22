@@ -18,23 +18,7 @@ public class Model {
 	 * 
 	 */
 	public Model () {
-		puzzle = new Puzzle(4, 5);
-		Piece p = new Piece(2, 2);
-		p.setWinner(true);
-		puzzle.add(p, 1, 0);
 		
-		puzzle.add(new Piece(1, 2), 0, 0);
-		puzzle.add(new Piece(1, 2), 3, 0);
-		
-		puzzle.add(new Piece(1, 2), 0, 2);
-		puzzle.add(new Piece(1, 2), 3, 2);
-		
-		puzzle.add(new Piece(1, 1), 1, 2);
-		puzzle.add(new Piece(1, 1), 2, 2);
-		puzzle.add(new Piece(1, 1), 2, 3);
-		puzzle.add(new Piece(1, 1), 1, 3);
-		
-		puzzle.add(new Piece(2, 1), 1, 4);
 	}
 	
 	public boolean tryMove(MoveType dir) {
@@ -63,6 +47,15 @@ public class Model {
 		ArrayList<MoveType> moves = new ArrayList<>();
 		
 		Coordinate coord = p.getLocation();
+		
+		if (p.isWinner()) {
+			int exitCol = puzzle.getExitColumn();
+			int exitRow = puzzle.getExitRow();
+			Coordinate exitCoord = new Coordinate(exitCol, exitRow);
+			if (coord.equals(exitCoord)) {
+				moves.add(MoveType.Down);
+			}
+		}
 		
 		// Left?
 		if (coord.col > 0) {
@@ -119,7 +112,12 @@ public class Model {
 		return moves;
 	}
 	
-	public void setPuzzle(Puzzle p) { puzzle = p; }
+	public void setPuzzle(Puzzle p) { 
+		puzzle = p;
+		numMoves = 0;
+		gameOver = false;
+		selectedPiece = null;
+	}
 	public Puzzle getPuzzle() { return puzzle; }
 	
 	public void setSelectedPiece(Piece p) { selectedPiece = p; }
@@ -130,4 +128,18 @@ public class Model {
 	public void setGameOver(boolean flag) { gameOver = flag; }
 
 	public int getNumMoves() { return numMoves; }
+	
+	public void resetPuzzle() {
+		puzzle.reset();
+		selectedPiece = null;
+		numMoves = 0;
+		gameOver = false;
+	}
+
+	public boolean isWinCondition(MoveType dir) {
+		if (selectedPiece == null) { return false; }
+		if (!selectedPiece.isWinner) { return false; }
+		
+		return puzzle.isWinCondition(selectedPiece.getColumn(), selectedPiece.getRow(), dir);
+	}
 }

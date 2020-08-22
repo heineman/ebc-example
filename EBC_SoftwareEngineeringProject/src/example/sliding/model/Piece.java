@@ -12,6 +12,14 @@ public class Piece {
 		this.height = height;
 	}
 	
+	public Piece copy() {
+		Piece p = new Piece(width, height);
+		p.setRow(row);
+		p.setColumn(col);
+		p.setWinner(isWinner);
+		return p;
+	}
+	
 	public boolean isWinner() { return isWinner; }
 	public void setWinner(boolean flag) { isWinner = flag; }
 	
@@ -36,5 +44,6 @@ public class Piece {
 		this.row += dir.deltaR;
 		this.col += dir.deltaC;
 	}
+
 
 }
