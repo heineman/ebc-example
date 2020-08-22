@@ -31,6 +31,16 @@ public class Puzzle implements Iterable<Piece> {
 		p.setRow(row);
 		pieces.add(p);
 	}
+	
+	public boolean isCovered(Coordinate coord) {
+		for (Piece p : pieces) {
+			if (p.contains(coord)) {
+				return true;
+			}
+		}
+		
+		return false;
+	}
 
 	@Override
 	public Iterator<Piece> iterator() {

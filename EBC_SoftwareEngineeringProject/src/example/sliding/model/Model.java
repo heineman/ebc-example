@@ -1,5 +1,8 @@
 package example.sliding.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Model {
 	Puzzle puzzle;
 	boolean gameOver;
@@ -31,6 +34,74 @@ public class Model {
 		puzzle.add(new Piece(1, 1), 1, 3);
 		
 		puzzle.add(new Piece(2, 1), 1, 4);
+	}
+	
+	public List<MoveType> availableMoves() {
+		ArrayList<MoveType> moves = new ArrayList<>();
+		if (selectedPiece == null) {
+			return moves;
+		}
+		return availableMoves(selectedPiece);
+	}
+	
+	public List<MoveType> availableMoves(Piece p) {
+		ArrayList<MoveType> moves = new ArrayList<>();
+		
+		Coordinate coord = p.getLocation();
+		
+		// Left?
+		if (coord.col > 0) {
+			boolean available = true;
+			for (int r = 0; r < p.height; r++) {
+				if (puzzle.isCovered(new Coordinate(coord.col - 1, coord.row))) {
+					available = false;
+				}
+			}
+			if (available) {
+				moves.add(MoveType.Left);
+			}
+		}
+		
+		// Right?
+		if (coord.col < puzzle.numColumns - 1) {
+			boolean available = true;
+			for (int r = 0; r < p.height; r++) {
+				if (puzzle.isCovered(new Coordinate(coord.col + p.width, coord.row))) {
+					available = false;
+				}
+			}
+			if (available) {
+				moves.add(MoveType.Right);
+			}
+		}
+		
+		// Up?
+		if (coord.row > 0) {
+			boolean available = true;
+			for (int c = 0; c < p.width; c++) {
+				if (puzzle.isCovered(new Coordinate(coord.col, coord.row - 1))) {
+					available = false;
+				}
+			}
+			if (available) {
+				moves.add(MoveType.Up);
+			}
+		}
+				
+		// Down?
+		if (coord.row < puzzle.numRows - 1) {
+			boolean available = true;
+			for (int c = 0; c < p.width; c++) {
+				if (puzzle.isCovered(new Coordinate(coord.col, coord.row + p.height))) {
+					available = false;
+				}
+			}
+			if (available) {
+				moves.add(MoveType.Down);
+			}
+		}
+		
+		return moves;
 	}
 	
 	public void setPuzzle(Puzzle p) { puzzle = p; }

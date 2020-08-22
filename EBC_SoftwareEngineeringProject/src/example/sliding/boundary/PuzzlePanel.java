@@ -27,7 +27,7 @@ public class PuzzlePanel extends JPanel {
 		int row = p.getRow();
 		
 		// DEFECT
-		Rectangle rect = new Rectangle(col*boxSize + offset, row*boxSize + offset, p.width*(boxSize - 2*offset), p.height*(boxSize - 2*offset));
+		Rectangle rect = new Rectangle(col*boxSize + offset, row*boxSize + offset, p.width*boxSize - 2*offset, p.height*boxSize - 2*offset);
 		return rect;
 	}
 	

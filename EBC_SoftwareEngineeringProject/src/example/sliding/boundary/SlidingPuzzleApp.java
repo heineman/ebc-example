@@ -2,6 +2,7 @@ package example.sliding.boundary;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -9,6 +10,7 @@ import javax.swing.border.EmptyBorder;
 
 import example.sliding.controller.SelectPieceController;
 import example.sliding.model.Model;
+import example.sliding.model.MoveType;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -22,8 +24,13 @@ public class SlidingPuzzleApp extends JFrame {
 	PuzzlePanel panel;
 
 	Model model;
+	JButton btnUp, btnDown, btnRight, btnLeft;
 	
 	public PuzzlePanel getPuzzlePanel() { return panel; }
+	public JButton getUpButton() { return btnUp; }
+	public JButton getDownButton() { return btnDown; }
+	public JButton getLeftButton() { return btnLeft; }
+	public JButton getRightButton() { return btnRight; }
 	
 	/**
 	 * Create the frame.
@@ -52,13 +59,13 @@ public class SlidingPuzzleApp extends JFrame {
 		
 		JButton btnReset = new JButton("Reset");
 		
-		JButton btnUp = new JButton("^");
+		btnUp = new JButton("^");
 		
-		JButton btnDown = new JButton("v");
+		btnDown = new JButton("v");
 		
-		JButton btnRight = new JButton(">");
+		btnRight = new JButton(">");
 		
-		JButton btnNewButton = new JButton("<");
+		btnLeft = new JButton("<");
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -86,7 +93,7 @@ public class SlidingPuzzleApp extends JFrame {
 							.addContainerGap(137, Short.MAX_VALUE))
 						.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
 							.addGap(62)
-							.addComponent(btnNewButton)
+							.addComponent(btnLeft)
 							.addGap(50)
 							.addComponent(btnRight)
 							.addGap(119))))
@@ -108,7 +115,7 @@ public class SlidingPuzzleApp extends JFrame {
 							.addPreferredGap(ComponentPlacement.RELATED)
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
 								.addComponent(btnRight)
-								.addComponent(btnNewButton))
+								.addComponent(btnLeft))
 							.addGap(7)
 							.addComponent(btnDown)
 							.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -116,5 +123,6 @@ public class SlidingPuzzleApp extends JFrame {
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		contentPane.setLayout(gl_contentPane);
+		UpdateButtons.enableButtons(this, new ArrayList<MoveType>());
 	}
 }
