@@ -48,7 +48,11 @@ public class PuzzlePanel extends JPanel {
 			if (p.equals(selectedPiece)) {
 				g.setColor(Color.yellow);
 			} else {
-				g.setColor(Color.gray);
+				if (p.isWinner()) {
+					g.setColor(Color.red);;
+				} else {
+					g.setColor(Color.gray);
+				}
 			}
 			
 			Rectangle r = computeRectangle(p);

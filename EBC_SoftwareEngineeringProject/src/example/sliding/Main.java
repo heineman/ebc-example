@@ -30,12 +30,12 @@ public class Main {
 		puzzle.add(new Piece(1, 2), 0, 2);
 		puzzle.add(new Piece(1, 2), 3, 2);
 		
-//		puzzle.add(new Piece(1, 1), 1, 2);
-//		puzzle.add(new Piece(1, 1), 2, 2);
-//		puzzle.add(new Piece(1, 1), 2, 3);
-//		puzzle.add(new Piece(1, 1), 1, 3);
-//		
-//		puzzle.add(new Piece(2, 1), 1, 4);
+		puzzle.add(new Piece(1, 1), 1, 2);
+		puzzle.add(new Piece(1, 1), 2, 2);
+		puzzle.add(new Piece(1, 1), 2, 3);
+		puzzle.add(new Piece(1, 1), 1, 3);
+		
+		puzzle.add(new Piece(2, 1), 1, 4);
 		m.setPuzzle(puzzle);
 		
 		SlidingPuzzleApp app = new SlidingPuzzleApp(m);
