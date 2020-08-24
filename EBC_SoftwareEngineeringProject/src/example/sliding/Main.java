@@ -36,7 +36,7 @@ public class Main {
 		puzzle.add(new Piece(1, 1), 1, 3);
 		
 		puzzle.add(new Piece(2, 1), 1, 4);
-		m.setPuzzle(puzzle);
+		m.setPuzzle(puzzle); 
 		
 		SlidingPuzzleApp app = new SlidingPuzzleApp(m);
 		
