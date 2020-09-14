@@ -11,18 +11,19 @@ import example.contacts.storage.RealStorage;
 import example.contacts.util.Util;
 
 public class Main {
-	public static void main(String args[]) {
+	public static void main(String args[]) { 
 		Model m = new Model(); 
 		
 		// load up from test storage
 		IStorage st = new RealStorage(); 
 		st.contacts().forEachRemaining(c -> m.add(c));
 		
-		ContactFrame frame = new ContactFrame(m);
+		ContactFrame frame = new ContactFrame(m); 
 		frame.populate();
 		
 		frame.addWindowListener (new WindowAdapter() {
 
+			@Override
 			public void windowClosing(WindowEvent e) {
 				 if (new QuitController().confirm(frame)) {
 					 st.store(m.contacts());

@@ -34,7 +34,7 @@ public class RealStorage implements IStorage {
 			while (sc.hasNextLine()) {
 				String line = sc.nextLine();
 				String[] vals = line.split(SEP);
-				Contact c = new Contact(vals[0], vals[1], vals[2]);
+				Contact c = new Contact(vals[0], vals[1], vals[2]); 
 				contacts.add(c);
 			}
 		} finally {

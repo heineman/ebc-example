@@ -12,7 +12,7 @@ public class SelectItemController {
 	
 	public SelectItemController (Model m, ContactFrame frame) {
 		this.model = m;
-		this.frame = frame;
+		this.frame = frame; 
 	}
 	
 	public void process() {

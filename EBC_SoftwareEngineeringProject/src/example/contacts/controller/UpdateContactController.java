@@ -37,7 +37,7 @@ public class UpdateContactController {
 		icf.dispose();
 		
 		// refresh
-		frame.repaint();
+		frame.repaint(); 
 	}
 	
 	/** 

@@ -39,7 +39,7 @@ public class ContactFrame extends JFrame {
 	/** Can navigate to the buttons. */
 	public JButton getAddButton() { return addButton; }
 	public JButton getRemoveButton() { return removeButton; }
-	public JButton getUpdateButton() { return updateButton; }
+	public JButton getUpdateButton() { return updateButton; } 
 	
 	public ContactFrame(Model m) {
 		this.model = m;

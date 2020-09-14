@@ -14,7 +14,7 @@ public class RemoveSelectedController {
 	public RemoveSelectedController (Model m, ContactFrame frame) {
 		this.model = m;
 		this.frame = frame;
-	}
+	} 
 	
 	public void process() {
 		JList<? extends Contact> list =  frame.getContactsList();

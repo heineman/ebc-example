@@ -1,5 +1,7 @@
 package example.contacts.controller;
 
+import javax.swing.JList;
+
 import org.junit.*;
 
 import example.contacts.model.Contact;
@@ -42,9 +44,13 @@ public class TestAdd extends TestCase {
 		
 		// act on the dialog using the 2nd half of the controller.
 		new AddContactController(model, frame).act(icf);
+		icf.dispose();
 		
 		assertEquals ("name1", newContact.getName());
 		assertEquals ("phone1", newContact.getPhone());
 		assertEquals ("email1", newContact.getEmail());		
+		
+		JList<Contact> list = frame.getContactsList();
+		assertEquals (2, list.getModel().getSize());
 	}
 }
