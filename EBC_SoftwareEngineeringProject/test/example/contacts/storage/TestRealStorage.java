@@ -17,7 +17,7 @@ public class TestRealStorage {
 		RealStorage rs = new RealStorage();
 		
 		// DONE FOR TESTING so don't interfere.
-		rs.storageFile = new File (new File ("test"), "testContacts.txt");
+		rs.storageFile = new File (new File ("test"), "testContacts.txt"); 
 		rs.storageFile.delete();
 		
 		Contact contact1 =  new Contact("name1", "phone1", "email1");

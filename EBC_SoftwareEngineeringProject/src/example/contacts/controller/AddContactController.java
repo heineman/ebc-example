@@ -2,6 +2,7 @@ package example.contacts.controller;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 
 import example.contacts.model.*;
 import example.contacts.view.*;
@@ -18,6 +19,8 @@ public class AddContactController {
 	}
 	
 	public void process() {
+		String sss = JOptionPane.showInputDialog("Please enter some text");
+		System.out.println(sss);
 		IndividualContactFrame icf = new IndividualContactFrame(new Contact(""));
 		icf.getNameField().setEditable(true);
 		icf.getOkButton().setEnabled(false);

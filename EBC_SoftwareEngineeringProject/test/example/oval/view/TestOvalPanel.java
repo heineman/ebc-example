@@ -21,6 +21,12 @@ public class TestOvalPanel {
 	
 	@After
 	public void tearDown() {
+		try { 
+			Thread.sleep(500);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		
 		app.setVisible(false);
 	}
 	
@@ -33,5 +39,6 @@ public class TestOvalPanel {
 		model.addOval(o);
 		app.panel.repaint();
 		System.out.println("Drawn");
+		
 	}
 }
