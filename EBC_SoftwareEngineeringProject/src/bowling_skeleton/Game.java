@@ -11,6 +11,7 @@ import bowling.IFrame;
  */
 public class Game implements IBowling {
 	
+	int score = 0;
 	public Game () {
 		
 	}
@@ -18,13 +19,13 @@ public class Game implements IBowling {
 	/** Add the following roll to the game. */
 	@Override
 	public void roll (int pins) {
-		
+		score += pins;
 	}
 	
 	/** Return the score of the game. */
 	@Override
 	public int score() {
-		return -1; // TODO
+		return score;
 	}
 
 	@Override
