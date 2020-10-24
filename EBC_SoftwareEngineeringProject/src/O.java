@@ -11,6 +11,7 @@ class O extends JFrame{
 	Random n=new Random();
 	public class S extends JPanel {
 		public void paintComponent(Graphics g) {
+			
 			if(m>0){
 				g.fillRect(x,y,w,w);
 				g.setColor(Color.WHITE);
@@ -30,6 +31,7 @@ class O extends JFrame{
 			public void mousePressed(MouseEvent e) {
 				if(new Rectangle(x,y,w,w).contains(e.getPoint())) {
 					m=1-m;
+					System.out.println(p.getWidth() + "," + p.getHeight());
 					x=(int)((p.getWidth()-w)*n.nextDouble());
 					y=(int)((p.getHeight()-w)*n.nextDouble());
 					repaint();
@@ -41,6 +43,7 @@ class O extends JFrame{
 	}
 	public static void main(String[]b){
 		O a=new O();
+		
 		a.addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
 				if(0==JOptionPane.showConfirmDialog(a,"Do you wish to exit Application?"))
