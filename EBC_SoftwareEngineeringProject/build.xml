@@ -251,6 +251,7 @@
             <test name="example.sliding.model.TestMoveType" todir="${junit.output.dir}"/>
             <test name="example.sliding.model.TestPiece" todir="${junit.output.dir}"/>
             <test name="example.sliding.model.TestPuzzle" todir="${junit.output.dir}"/>
+            <test name="example.start.model.TestModel" todir="${junit.output.dir}"/>
             <test name="oo.contractChecking.TestSafeService1" todir="${junit.output.dir}"/>
             <test name="oo.contractChecking.TestSafeService2" todir="${junit.output.dir}"/>
             <test name="oo.contractChecking.TestSafeService3" todir="${junit.output.dir}"/>
@@ -321,6 +322,8 @@
         <mkdir dir="${junit.output.dir}"/>
         <junit fork="yes" printsummary="withOutAndErr">
             <formatter type="xml"/>
+            <test name="bowling_impl.TestFrame" todir="${junit.output.dir}"/>
+            <test name="bowling_skeleton.TestFrame" todir="${junit.output.dir}"/>
             <test name="example.contacts.controller.TestAdd" todir="${junit.output.dir}"/>
             <test name="example.contacts.controller.TestDelete" todir="${junit.output.dir}"/>
             <test name="example.contacts.controller.TestSelect" todir="${junit.output.dir}"/>
@@ -344,6 +347,14 @@
             <test name="example.sliding.model.TestMoveType" todir="${junit.output.dir}"/>
             <test name="example.sliding.model.TestPiece" todir="${junit.output.dir}"/>
             <test name="example.sliding.model.TestPuzzle" todir="${junit.output.dir}"/>
+            <test name="example.start.model.TestModel" todir="${junit.output.dir}"/>
+            <test name="oo.contractChecking.TestSafeService1" todir="${junit.output.dir}"/>
+            <test name="oo.contractChecking.TestSafeService2" todir="${junit.output.dir}"/>
+            <test name="oo.contractChecking.TestSafeService3" todir="${junit.output.dir}"/>
+            <test name="oo.contractChecking.TestUnsafe" todir="${junit.output.dir}"/>
+            <test name="oo.contravariance.TestIterator" todir="${junit.output.dir}"/>
+            <test name="oo.covariance.TestInterface" todir="${junit.output.dir}"/>
+            <test name="oo.liskov.TestDetector" todir="${junit.output.dir}"/>
             <jvmarg line="-ea"/>
             <classpath refid="run.test (12).classpath"/>
         </junit>
