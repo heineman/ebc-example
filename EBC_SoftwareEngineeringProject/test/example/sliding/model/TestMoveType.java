@@ -1,10 +1,10 @@
 package example.sliding.model;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-class TestMoveType {
+public class TestMoveType {
 
 	@Test
 	public void testMove() {

@@ -1,13 +1,15 @@
 package example.sliding.model;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
-class TestPiece {
+public class TestPiece {
 
 	@Test
-	void testConstruction() {
+	public void testConstruction() {
 		Piece piece = new Piece(1, 2);
 		assertEquals (1, piece.width);
 		assertEquals (2, piece.height);
@@ -15,7 +17,7 @@ class TestPiece {
 	}
 	
 	@Test
-	void testContains() {
+	public void testContains() {
 		Piece p = new Piece (1, 2);
 		p.setRow(0);
 		p.setColumn(0);
@@ -31,21 +33,21 @@ class TestPiece {
 	}
 	
 	@Test
-	void testWinner() {
+	public void testWinner() {
 		Piece piece = new Piece(1, 2);
 		piece.setWinner(true);
 		assertTrue (piece.isWinner());
 	}
 	
 	@Test
-	void testCopy() {
+	public void testCopy() {
 		Piece piece = new Piece(1, 2);
 		Piece p2 = piece.copy();
 		assertEquals (p2.row, piece.row); // could do more....
 	}
 	
 	@Test
-	void testPlacement() {
+	public void testPlacement() {
 		Piece piece = new Piece(1, 2);
 		piece.setRow(2);
 		assertEquals (2, piece.getRow());
@@ -54,7 +56,7 @@ class TestPiece {
 	}
 
 	@Test
-	void testMove() {
+	public void testMove() {
 		Piece piece = new Piece(1, 2);
 		piece.setColumn(2);
 		piece.setRow(1);
