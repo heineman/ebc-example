@@ -30,6 +30,7 @@ public class TestComputeController {
 		app.setVisible(false);
 		app.dispose();
 	}
+	
 
 	@Test
 	public void test() {
