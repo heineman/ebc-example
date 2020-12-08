@@ -12,3 +12,5 @@ branches:
   only:
   - mvn_project
   
+after_failure:
+  - cat MSBuild_*.failure.txt
