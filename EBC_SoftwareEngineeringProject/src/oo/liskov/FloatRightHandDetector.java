@@ -4,7 +4,7 @@ package oo.liskov;
  * Compute direction of the "elbow" (p1,p2) and (p2,p3).
  * 
  * | 1 p1x p1y |
- * | 1 p2x p2y | :   cp=(p2x–p1x)(p3y–p1y)–(p2y–p1y)(p3x–p1x)
+ * | 1 p2x p2y | :   cp=(p2x-p1x)(p3y-p1y)-(p2y-p1y)(p3x-p1x)
  * | 1 p3x p3y |
  * 
  * If cp is negative, then the three points determine a right 
