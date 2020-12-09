@@ -1,5 +1,8 @@
 language: java
 
+env:
+   - DISPLAY=:0
+
 dist: xenial
 
 services:
@@ -7,3 +10,5 @@ services:
 
 before_script:
    - sudo apt-get install ant-optional
+   - sleep 5      # give time for everything to start up
+   - xdpyinfo     # see if we can get info on the xdisplay
