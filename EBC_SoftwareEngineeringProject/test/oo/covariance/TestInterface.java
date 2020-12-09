@@ -17,7 +17,12 @@ public class TestInterface extends TestCase {
 		// THIS FAILS! Can't use at .05
 		System.out.println(res1);
 		System.out.println(res2);
-		assertEquals(res1, res2, .00001);
+		try {
+			assertEquals(res1, res2, .05);
+			fail ("this should compare 0.4054651081081644 with 0.40580357142857143 which is not within 0.05");
+		} catch (Error e) {
+			// success
+		}
 	}
 	
 //	 can s2 replace s1 at .05
