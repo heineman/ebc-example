@@ -83,7 +83,7 @@ es." name="build-refprojects"/>
 	   <classpath refid="JUnit4.libraryclasspath"/>
             <formatter type="xml"/>
 	    <batchtest fork="yes" todir="${junit.output.dir}">
-	      <fileset dir="">
+	      <fileset dir="test">
 		<include name="**/*Test*.java"/>
 		</fileset>
 	    </batchtest>
