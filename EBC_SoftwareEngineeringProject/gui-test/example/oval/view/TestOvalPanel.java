@@ -27,7 +27,7 @@ public class TestOvalPanel {
 			e.printStackTrace();
 		}
 		
-		app.setVisible(false);
+		app.setVisible(false); 
 	}
 	
 	// not much you can really do here other than ensure doesn't crash.

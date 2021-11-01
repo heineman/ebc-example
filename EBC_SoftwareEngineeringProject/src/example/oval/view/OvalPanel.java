@@ -19,7 +19,7 @@ public class OvalPanel extends JPanel {
 	
 		OvalCreator control = new OvalCreator(model, this);
 		this.addMouseListener(control);
-		this.addMouseMotionListener(control);
+		this.addMouseMotionListener(control); 
 	}
 	
 	@Override

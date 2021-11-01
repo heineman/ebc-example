@@ -20,7 +20,7 @@ public abstract class ModelTestCase {
 	}
 	
 	@Before
-	public void setUp() {
+	public void setUp() { 
 		model  = new Model();
 		
 		Puzzle puzzle = new Puzzle(4, 5);

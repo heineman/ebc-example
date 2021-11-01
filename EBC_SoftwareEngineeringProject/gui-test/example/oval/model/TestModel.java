@@ -6,7 +6,7 @@ import java.awt.Point;
 
 import org.junit.Test;
 
-public class TestModel {
+public class TestModel { 
 	@Test
 	public void testStart() {
 		Model m = new Model();
